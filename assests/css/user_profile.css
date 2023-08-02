@@ -1,4 +1,14 @@
 body{
     margin: 0;
-    background-color: blue;
+    background-color: rgb(159, 239, 227);
+}
+
+img{
+    display: block;
+    border-radius: 50%;
+    border: 5px double rgb(200, 35, 65);
+    width: 100px;
+    height: 100px;
+    margin-bottom: 10px;
+    
 }
