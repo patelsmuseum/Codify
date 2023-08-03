@@ -1,0 +1,27 @@
+#container {
+    display: flex;
+    background-image: linear-gradient(rgb(91, 181, 161) , rgb(2, 59, 30));
+}
+#container #feed-posts {
+    width: 80%;
+    padding: 10px;
+    /* background-image: linear-gradient(rgb(144, 144, 217) , rgb(160, 135, 160)); */
+    
+    
+}
+#container #user-friends {
+    width: 20%;
+    padding: 10px;
+    border-left: 2px solid rgba(0, 0, 0, 0.281);
+    height: auto;
+    /* background-image: linear-gradient(rgb(144, 144, 217) , rgb(160, 135, 160)); */
+}
+
+#new-post-form{
+    border: 2px solid rgb(0, 0, 0);
+    padding: 3px;
+}
+
+textarea{
+    background-color: rgb(167, 233, 220);
+}
