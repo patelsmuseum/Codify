@@ -2,8 +2,9 @@
 A social media platform for sharing your thoughts 
 
 ## Features
-* Users SignUp / SignIn / SignOut options using email and google 
+* Users can SignUp / SignIn   using email OR directle by  google
 * Users can Post / and delete his/her post
+* Users can Comment on posts 
 * Users can update his/her own profile
 
 # Tech Stack used
