@@ -6,6 +6,7 @@ A social media platform for sharing your thoughts
 * Users can Post / and delete his/her post
 * Users can Comment on posts 
 * Users can update his/her own profile
+* Users can like post and comments 
 
 # Tech Stack used
 * Nodejs
@@ -16,3 +17,4 @@ A social media platform for sharing your thoughts
 * Passport
 * Flash
 * Noty
+* *Multer
