@@ -1,6 +1,7 @@
-const Comment = require('../models/comments')
-const Post = require('../models/post')
-
+const Comment = require('../models/comments');
+const Post = require('../models/post');
+const Like = require('../models/like');
+const commentsMailer = require('../mailers/comments_mailer');
 // module.exports.create = async function(req , res){
 //     Post.findById(req.body.post , function(err , post){
 //         if(post){
@@ -35,6 +36,9 @@ module.exports.create = async function(req, res){
           post.comments.push(comment);
           post.save();
           console.log('Comment created -->', comment);
+
+          comment = await comment.populate('user' , 'name email');
+          commentsMailer.newComment(comment);
           return res.redirect('back');
       }
   }
@@ -64,7 +68,7 @@ module.exports.destroy = async function(req, res){
     
     try{
         let comment = await Comment.findById(req.params.id);
-
+        
         if(comment.user == req.user.id ){
             let postId = comment.post;
             await comment.deleteOne();
@@ -72,6 +76,7 @@ module.exports.destroy = async function(req, res){
             let post = await Post.findById(postId);
             post.comments.splice(post.comments.indexOf(req.params.id) , 1);
             await post.save();
+            await Like.deleteMany({likeable: comment._id, onModel: 'Comment'});
 
             res.redirect('back');
         }

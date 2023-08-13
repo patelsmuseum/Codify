@@ -8,7 +8,12 @@ module.exports.home = async function (req, res) {
         populate : {
           path: 'user'
         }
-      });  /// populate is for getting full user from posts
+      }).populate({
+        path:'comments',
+        populate:{
+          path:'likes'
+        }
+      }).populate('likes');  /// populate is for getting full user from posts
 
       const users = await User.find({});
       
