@@ -1,6 +1,9 @@
 const express = require('express');
 const app = express();
 
+const cors = require('cors');
+app.use(cors());
+
 //importing cookie parser
 const cookieParser = require('cookie-parser');
 
@@ -86,6 +89,16 @@ app.use(express.static(path.join(__dirname,'assests')));
 
 //make the uploads path available to broswer
 app.use('/uploads' , express.static(__dirname +  '/uploads'));
+
+
+
+//setup the chat server to be used with socket.io
+const chatServer = require('http').Server(app);
+const chatSockets = require('./config/chat_sockets').chatSockets(chatServer);
+chatServer.listen(5000);
+console.log('chat server is listening at port 5000');
+
+
 
 // use express router 
 app.use('/' , require('./routes'));
