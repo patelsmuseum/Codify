@@ -1,6 +1,6 @@
 #container {
     display: flex;
-    background-image: linear-gradient(rgb(91, 181, 161) , rgb(2, 59, 30));
+    background-image: linear-gradient(rgb(91, 181, 161) , rgb(213, 230, 221));
 }
 #container #feed-posts {
     width: 80%;

@@ -11,7 +11,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(cookieParser());
 
-const port = 8000;
+const port = process.env.PORT || 8000;
 const path = require('path');
 
 // importing database 
@@ -57,7 +57,7 @@ app.use(session({
     //   )
 
     store: MongoStore.create({
-        mongoUrl:'mongodb://127.0.0.1:27017/codify_development',
+        mongoUrl:'mongodb+srv://pankajpurshotam:patel123@cluster0.l9qysyp.mongodb.net/?retryWrites=true&w=majority',
         mongooseConnection : db,
         autoRemove: 'disabled'
     },
