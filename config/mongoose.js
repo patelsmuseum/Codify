@@ -1,15 +1,15 @@
 const mongoose = require('mongoose');
 
 
-const url = 'mongodb+srv://pankajpurshotam:patel123@cluster0.l9qysyp.mongodb.net/?retryWrites=true&w=majority';
+main().catch(err => console.log(err));
 
-mongoose.connect(url ,{
-  useNewUrlParser: true,
-useUnifiedTopology: true,
-});
+async function main() {
+  await mongoose.connect('mongodb+srv://pankajpurshotam:patel123@cluster0.l9qysyp.mongodb.net/?retryWrites=true&w=majority');
+
+}
 const db=mongoose.connection;
 
-main().catch(err => console.log(err));
+
 
 //connecting mangoose
 // async function main() {
