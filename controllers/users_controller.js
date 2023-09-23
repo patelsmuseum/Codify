@@ -20,7 +20,7 @@ const path = require('path');
 //     }
 //   } catch (error) {
 //     // Handle any errors that occurred during the process
-//     res.status(500).json({ error: 'An error occurred while fetching the user.' });
+//     res.status(500).json({ error: 'An error occurred while fetching the user.'});
 //   }
 // };
 
