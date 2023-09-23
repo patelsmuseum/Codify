@@ -2,7 +2,9 @@ const express = require('express');
 const app = express();
 
 const cors = require('cors');
-app.use(cors());
+app.use(cors({
+    origin: 'http://localhost:8000/'
+}));
 
 //importing cookie parser
 const cookieParser = require('cookie-parser');
