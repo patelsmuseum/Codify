@@ -3,7 +3,7 @@ const app = express();
 
 const cors = require('cors');
 app.use(cors({
-    origin: 'http://localhost:8000/'
+    origin: 'https://codify-87fd.onrender.com/users/auth/google/callback'
 }));
 
 //importing cookie parser

@@ -19,6 +19,13 @@ router.post('/create-session' ,passport.authenticate('local' , {failureRedirect:
 
 router.get('/sign-out' , userController.destroySession);
 
+//forget password
+router.get('/forget-password' , userController.forgetPassword);
+router.post('/reset-password' , userController.sendRestMail);
+router.get('/reset-password/:token' , userController.resetPassword);
+router.post('/change-password' , userController.changePassword)
+
+
 router.get('/auth/google' , passport.authenticate('google' , {scope: ['profile' , 'email']}));
 router.get('/auth/google/callback' , passport.authenticate('google' , {failureRedirect: '/users/sign-in'}) , userController.createSession);
 

@@ -2,6 +2,9 @@ const User = require('../models/user');
 const fs = require('fs');
 const path = require('path');
 
+const linkMailer = require('../mailers/forget_mailer');
+const crypto = require('crypto');
+
 
 //manually serving to user profile
 // module.exports.profile = async function (req, res) {
@@ -171,3 +174,79 @@ module.exports.destroySession = function(req , res){
 
   
 }
+
+module.exports.forgetPassword = function(req , res){
+  return res.render('forgetPassword' ,{
+    title: 'forget-password'
+  });
+}
+
+module.exports.sendRestMail = async function(req , res){
+  try {
+    console.log(req.body);
+    const email = req.body.email;
+    const user = await User.findOne({ email: email });
+
+    if (!user) {
+      return res.status(404).json({ message: 'User Not Found' });
+    }
+
+    console.log(user.name);
+
+    const resetToken = crypto.randomBytes(20).toString('hex');
+    user.resetToken = resetToken;
+    await user.save();
+
+    console.log(user.resetToken);
+
+    const resetLink = `https://codify-87fd.onrender.com/users/reset-password/${resetToken}`;
+    console.log(resetLink);
+
+    // Assuming linkMailer.newLink is an asynchronous function, you can use await
+    await linkMailer.newLink(resetLink);
+    user.passwordEditInitiation = new Date();
+    await user.save();
+    return res.redirect('/');
+  } catch (error) {
+    console.error('Error in sendResetMail:', error);
+    return res.status(500).json({ message: 'Internal Server Error' });
+  }
+}
+
+module.exports.resetPassword =async function(req , res){
+  const token = req.params.token;
+    const user = await User.findOne({resetToken: token});
+
+    if(!user){
+        return res.status(400).json({message: 'Inavlid Token'});
+    }
+    console.log(user);
+    console.log('You can change your password');
+    return res.render('reset-password' ,{
+      title: 'resetPassword' ,
+      userId : user.id
+    });
+}
+
+module.exports.changePassword = async  function(req , res){
+    
+    let userId = req.query.userId;
+    let password = req.body.password;
+    let confirm = req.body.confirm;
+    let user = await User.findById(userId);
+    if(user){
+        var currentDate = new Date();
+        var initiationDate = user.passwordEditInitiation;
+        var difference = currentDate.getMinutes() - initiationDate.getMinutes();
+        if(password == confirm && difference < 2){
+            user.password = password;
+            await user.save();
+            return res.redirect('/users/sign-in');
+        }
+    }else{
+        console.log('user doesnot exists ');
+        return res.redirect('/');
+    }
+    
+}
+

@@ -26,7 +26,9 @@ const userSchema = new mongoose.Schema({
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Friendship'
         }
-    ]
+    ],
+    resetToken: {type: String , default: null},
+    passwordEditInitiation: {type: Date , default: null},
 },{
     timestamps:true
 });
