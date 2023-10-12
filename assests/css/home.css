@@ -6,8 +6,7 @@
     width: 80%;
     padding: 10px;
     /* background-image: linear-gradient(rgb(144, 144, 217) , rgb(160, 135, 160)); */
-    
-    
+
 }
 #container #user-friends {
     width: 20%;
@@ -15,6 +14,16 @@
     border-left: 2px solid rgba(0, 0, 0, 0.281);
     height: auto;
     /* background-image: linear-gradient(rgb(144, 144, 217) , rgb(160, 135, 160)); */
+}
+
+#user-friends a{
+    text-decoration: none;
+}
+
+img{
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
 }
 
 #new-post-form{
@@ -32,6 +41,20 @@ textarea{
     padding: 5px 10px;
     border-radius: 5px;
     cursor: pointer;
+}
+
+/* #posts-list-container{
+    border: 2px solid black;
+    margin-top: 5px;
+} */
+
+#post-wrapper{
+    border: 2px solid black;
+    margin: 5px;
+}
+
+#post-wrapper a{
+    text-decoration: none;
 }
 
 #new-post-form input[type="submit"]:hover {

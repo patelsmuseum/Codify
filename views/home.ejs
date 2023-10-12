@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="/css/home.css">
+<script src="https://kit.fontawesome.com/605225b4c1.js" crossorigin="anonymous"></script>
 
 <div id="container">
     <section id="feed-posts">
@@ -11,9 +12,11 @@
         <% } %>
     
         <div id="posts-list-container">
-            <ul>
+            <ul style="list-style: none;">
                 <% for(post of posts) { %>
-                    <%- include('_post') -%>
+                    <div id="post-wrapper">
+                        <%- include('_post') -%>
+                    </div>
                     
                 <%} %>
             </ul>
@@ -26,7 +29,7 @@
         <h4>Friends</h4>
         <% for( u of all_users) {%>
             <p>
-                <a href="/users/profile/<%=u.id %>"> <%= u.name %></a>
+                <a href="/users/profile/<%=u.id %>"><img src="<%= u.avatar %>" > <%= u.name %></a>
             </p>
         <% } %>
         
