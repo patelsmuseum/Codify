@@ -8,6 +8,15 @@
         <%= comment.content %>
         <br>
         <small>
+            <div class="comment-author-avatar-container">
+                <img src="<%= comment.user.avatar || '/images/default-avatar.png' %>" 
+                     alt="<%= comment.user.name %>" 
+                     class="comment-author-avatar"
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="comment-author-avatar-fallback">
+                    <%= comment.user.name.charAt(0).toUpperCase() %>
+                </div>
+            </div>
             <%= comment.user.name %>
         </small>
         <br>

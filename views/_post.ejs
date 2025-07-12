@@ -11,7 +11,16 @@
         <% } %>
         <br>
         <small>
-            <img src="<%= post.user.avatar %>"> <%= post.user.name %>
+            <div class="post-author-avatar-container">
+                <img src="<%= post.user.avatar || '/images/default-avatar.png' %>" 
+                     alt="<%= post.user.name %>" 
+                     class="post-author-avatar"
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="post-author-avatar-fallback">
+                    <%= post.user.name.charAt(0).toUpperCase() %>
+                </div>
+            </div>
+            <%= post.user.name %>
         </small>
         <br>
         <small>

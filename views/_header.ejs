@@ -2,18 +2,28 @@
 <header id="layout-header">
     <nav>
         <div class="mini-logo">
-            <p>
-                <a href='/'>
-                    Codiefy
-                </a>
-            </p>
+            <a href='/'>
+                <img src="/images/logo.png" alt="Codiefy" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">
+                <span class="logo-text">Codiefy</span>
+            </a>
         </div>
     
         <div class="auth-links">
             <ul>
                 <% if (locals.user){ %>
                 <li>
-                    <a href="/users/profile/<%= user.id %>"><%= user.name %></a>
+                    <a href="/users/profile/<%= user.id %>" class="user-profile-link">
+                        <div class="user-avatar-container">
+                            <img src="<%= user.avatar || '/images/default-avatar.png' %>" 
+                                 alt="<%= user.name %>" 
+                                 class="user-avatar"
+                                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="user-avatar-fallback">
+                                <%= user.name.charAt(0).toUpperCase() %>
+                            </div>
+                        </div>
+                        <span class="user-name"><%= user.name %></span>
+                    </a>
                 </li>
                 <li>
                     <a href="/users/sign-out">Sign Out</a>

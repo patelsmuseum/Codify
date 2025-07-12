@@ -28,19 +28,30 @@
     <section id="user-friends">
         <h4>Friends</h4>
         <% for( u of all_users) {%>
-            <p>
-                <a href="/users/profile/<%=u.id %>"><img src="<%= u.avatar %>" > <%= u.name %></a>
-            </p>
+            <a href="/users/profile/<%=u.id %>">
+                <div class="friend-profile-row">
+                    <div class="friend-avatar-container">
+                        <img src="<%= u.avatar || '/images/default-avatar.png' %>" 
+                             alt="<%= u.name %>" 
+                             class="friend-avatar"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="friend-avatar-fallback">
+                            <%= u.name.charAt(0).toUpperCase() %>
+                        </div>
+                    </div>
+                    <span class="friend-username"><%= u.name %></span>
+                </div>
+            </a>
         <% } %>
         
     </section>
-    <% if(locals.user){%>
+    <!-- <% if(locals.user){%>
         <%- include("_chat_box") %> 
-    <%}%>
+    <%}%> -->
     
                
 </div>
-
+<!-- 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.js"></script>
 
 <script src="/js/chat_engine.js"></script>
@@ -49,4 +60,4 @@
     <script>
         new ChatEngine('chat-box','<%= locals.user.email %>');
     </script>
-<%}%>
+<%}%> -->

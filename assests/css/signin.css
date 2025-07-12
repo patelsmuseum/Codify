@@ -1,81 +1,198 @@
-/* Apply some basic styling to the container */
+/* Authentication container */
 .container {
-  max-width: 400px;
-  margin: 0 auto;
-  padding: 20px;
-  text-align: center;
-  background-color: #f7f7f7;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  font-family: Arial, sans-serif;
+    max-width: 450px;
+    margin: 50px auto;
+    padding: 40px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    position: relative;
+    overflow: hidden;
+}
+
+.container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
 /* Style the headings */
 h1 {
-  color: #333;
+    color: #333;
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 h2 {
-  color: #027b38;
+    color: #666;
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin-bottom: 30px;
 }
 
-/* Style the form inputs and button */
+/* Style the form inputs */
 input[type="email"],
-input[type="password"] {
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-  font-size: 16px;
+input[type="password"],
+input[type="text"] {
+    width: 100%;
+    padding: 15px 20px;
+    margin: 10px 0;
+    border: 2px solid #e1e5e9;
+    border-radius: 12px;
+    box-sizing: border-box;
+    font-size: 16px;
+    font-family: inherit;
+    transition: all 0.3s ease;
+    background: #f8f9fa;
 }
 
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="text"]:focus {
+    outline: none;
+    border-color: #667eea;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    transform: translateY(-1px);
+}
+
+/* Style the submit button */
 input[type="submit"] {
-  width: 100%;
-  padding: 10px;
-  background-color:#1aa2b1;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 18px;
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+input[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+input[type="submit"]::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+input[type="submit"]:hover::before {
+    left: 100%;
 }
 
 /* Style the "Forget Password" link */
 a {
-  text-decoration: none;
-  color: #027b38;
-  font-size: 14px;
-  margin-top: 10px;
-  display: block;
+    text-decoration: none;
+    color: #667eea;
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 15px;
+    display: block;
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    color: #5a6fd8;
+    transform: translateY(-1px);
 }
 
 /* Style the Google sign-in button */
 button {
-  background-color: #4285f4;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s;
+    width: 100%;
+    background: white;
+    color: #333;
+    border: 2px solid #e1e5e9;
+    border-radius: 12px;
+    padding: 15px 20px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 }
 
 button:hover {
-  background-color: #357ae8;
+    border-color: #667eea;
+    background: rgba(102, 126, 234, 0.05);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* Add some spacing */
 p {
-  margin-top: 20px;
+    margin-top: 25px;
+    color: #666;
+    font-size: 14px;
 }
 
 /* Add a horizontal line */
 hr {
-  height: 4px;
-  background-color: #023f38;
-  border: none;
-  margin: 20px 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #e1e5e9, transparent);
+    border: none;
+    margin: 30px 0;
+}
+
+/* Form group styling */
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+/* Error message styling */
+.error-message {
+    background: #fee;
+    color: #e74c3c;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border-left: 4px solid #e74c3c;
+    font-size: 14px;
+}
+
+/* Success message styling */
+.success-message {
+    background: #e8f5e8;
+    color: #27ae60;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border-left: 4px solid #27ae60;
+    font-size: 14px;
 }
